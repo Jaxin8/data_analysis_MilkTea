@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dark.api.mapper.BookMapper">
+    <resultMap id="BookVOMap" type="BookVO">
+        <id column="id" property="id"/>
+        <result column="phone" property="phone"/>
+        <result column="brand" property="brand"/>
+        <result column="total" property="total"/>
+        <result column="create_time" property="createtime"/>
+
+    </resultMap>
+
+
+    <!--where标签的作用:如果里面有成立的话,会添加一个where关键字并且会删除掉where 后面的第一个and 或者  or关键子-->
+    <select id="find" resultMap="BookVOMap" >
+        select id,phone,brand,total,create_time
+        from book
+         order by create_Time desc LIMIT 5
+    </select>
+
+</mapper>

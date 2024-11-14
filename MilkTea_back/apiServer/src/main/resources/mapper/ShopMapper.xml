@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dark.api.mapper.ShopMapper">
+    <resultMap id="shopVOMap" type="shopVO">
+
+        <id column="id" property="id" />
+        <result column="shopName" property="shopName" />
+        <result column="saleNumber" property="saleNumber" />
+        <result column="amount" property="amount" />
+        <result column="province" property="province" />
+        <result column="address" property="address" />
+    </resultMap>
+
+
+    <select id="find" resultMap="shopVOMap" parameterType="shopQuery">
+        select *
+        from shop
+        <where>
+            <if test="shopName != null and shopName!='' " >
+                and shopName like concat('%',#{shopName},'%')
+            </if>
+        </where>
+        ORDER BY saleNumber DESC
+    </select>
+
+    <select id="findById" resultMap="shopVOMap" parameterType="long">
+        SELECT * FROM shop WHERE id = #{id}
+    </select>
+
+    <insert id="add" parameterType="shop">
+        insert into shop
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            shopName,
+            saleNumber,
+            amount,
+            province,
+            address,
+        </trim>
+        <trim prefix=" values(" suffix=")" suffixOverrides=",">
+            #{shopName},
+            #{saleNumber},
+            #{amount},
+            #{province},
+            #{address},
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="shop">
+        update shop
+        <set>
+            <if test="shopName != null and shopName != ''">
+                    shopName=#{shopName},
+            </if>
+            <if test="saleNumber != null and saleNumber != ''">
+
+                saleNumber=#{saleNumber},
+            </if>
+            <if test="amount != null and amount != ''">
+                amount=#{amount},
+            </if>
+            <if test="address != null and address != ''">
+                address=#{address},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

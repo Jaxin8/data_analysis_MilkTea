@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dark.api.mapper.MapMapper">
+
+
+    <select id="findShopAmount" resultType="MapVO">
+        SELECT province AS name, COUNT(id) AS value
+        FROM shop
+        GROUP BY name
+        ORDER BY value DESC;
+    </select>
+
+    <select id="findAllShopAmount" resultType="int">
+        SELECT COUNT(id)
+        FROM shop
+    </select>
+
+    <insert id="add" parameterType="Shop">
+        insert into shop (shopName,saleNumber,amount,province) values(#{shopName},#{saleNumber},#{amount},#{province})
+    </insert>
+
+    <select id="findSalesAmount" resultType="long"> SELECT SUM(amount) FROM shop; </select>
+
+
+
+</mapper>

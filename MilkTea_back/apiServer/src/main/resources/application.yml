@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: product
+
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+  redis:
+    port: 6379
+    host: 192.168.98.135
+    password:
+    database: 0
+
+
+
+dark:
+  password: 123456
+  salt: Lai#@21
+  phone: 120
+  jwt:
+    secure: 123456
+    expire: 36000
+
+
