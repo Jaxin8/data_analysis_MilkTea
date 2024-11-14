@@ -4,3 +4,8 @@
 MilkTea_font为前端文件，前端使用Vue3框架，使用Echarts图表组件库。  
 MilkTea_back为后端文件，使用SpringBoot开发框架，使用的jdk1.8、maven3.6.0版本  
 数据库为Mysql8.0版本，e_commerce文件为数据库文件  
+By integrating multiple screens and advanced visualization technology, the system transforms complex data and information into intuitive, easy-to-understand graphs and graphs to help store managers better understand and analyze business data to make more accurate decisions.  
+The project uses front-end and back-end separation, which makes the code coupling low.  
+MilkTea_font is a front-end file, the front-end uses the Vue3 framework, and the Echarts chart component library is used.  
+MilkTea_back is a backend file, using the SpringBoot development framework, using jdk 1.8 and maven 3.6.0.
+The database is MySQL 8.0, and the e_commerce file is a database file.  
